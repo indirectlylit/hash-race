@@ -8,7 +8,11 @@
         <button type="submit" class="pure-button pure-button-primary" :disabled="input === ''">NEXT!</button>
       </fieldset>
     </form>
-    <p class="note">spaces are optional. press NEXT or the 'enter' key</p>
+    <p class="note">
+      case insensitive<br>
+      spaces are optional<br>
+      press NEXT or the 'enter' key<br>
+    </p>
   </div>
 
 </template>

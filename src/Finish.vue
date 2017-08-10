@@ -18,27 +18,27 @@
         <tr>
           <td>Overall</td>
           <td class="num">{{ (overall_speed).toFixed(2) }} s</td>
-          <td class="num">{{ (0).toFixed(1) }}%</td>
+          <td class="num">{{ (overall_error).toFixed(1) }}%</td>
         </tr>
         <tr v-if="hex.length">
           <td>Hexadecimal</td>
           <td class="num">{{ (hex_speed).toFixed(2) }} s</td>
-          <td class="num">{{ (0).toFixed(1) }}%</td>
+          <td class="num">{{ (hex_error).toFixed(1) }}%</td>
         </tr>
         <tr v-if="eng.length">
           <td>English</td>
           <td class="num">{{ (humanhash_speed).toFixed(2) }} s</td>
-          <td class="num">{{ (0).toFixed(1) }}%</td>
+          <td class="num">{{ (humanhash_error).toFixed(1) }}%</td>
         </tr>
         <tr v-if="swa.length">
           <td>Swahili</td>
           <td class="num">{{ (humanhashsw_speed).toFixed(2) }} s</td>
-          <td class="num">{{ (0).toFixed(1) }}%</td>
+          <td class="num">{{ (humanhashsw_error).toFixed(1) }}%</td>
         </tr>
         <tr v-if="pro.length">
           <td>Proquint</td>
           <td class="num">{{ (proquint_speed).toFixed(2) }} s</td>
-          <td class="num">{{ (0).toFixed(1) }}%</td>
+          <td class="num">{{ (proquint_error).toFixed(1) }}%</td>
         </tr>
       </tbody>
     </table>
@@ -63,10 +63,22 @@
       },
       avgSpeed(array) {
         if (!array.length) {
-          return -1;
+          return NaN;
         }
         return array.reduce((sum, item) => sum + item.time, 0) / array.length;
-      }
+      },
+      compare(a, b) {
+        return a.replace(' ', '').toLowerCase() === b.replace(' ', '').toLowerCase();
+      },
+      errorRate(array) {
+        const bad = array.reduce(
+          (sum, item) => {
+            return this.compare(item.input, item.output) ? sum : sum + 1;
+          },
+          0
+        );
+        return 100.0 * bad / array.length;
+      },
     },
     computed: {
       link() {
@@ -84,11 +96,11 @@
       humanhashsw_speed() { return this.avgSpeed(this.swa); },
       proquint_speed() { return this.avgSpeed(this.pro); },
 
-      overall_error() { return 3 },
-      hex_error() { return 3 },
-      humanhash_error() { return 3 },
-      humanhashsw_error() { return 3 },
-      proquint_error() { return 3 },
+      overall_error() { return this.errorRate(this.log) },
+      hex_error() { return this.errorRate(this.hex) },
+      humanhash_error() { return this.errorRate(this.eng) },
+      humanhashsw_error() { return this.errorRate(this.swa) },
+      proquint_error() { return this.errorRate(this.pro) },
 
       raw_data_json() { return JSON.stringify(this.log); },
     }
