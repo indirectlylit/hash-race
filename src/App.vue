@@ -2,7 +2,11 @@
 
   <div class="app">
     <Start v-if="state === 'start'" @begin="startRace" />
-    <Race v-if="state === 'race'" @done="showResults" />
+    <Race
+      v-if="state === 'race'"
+      @done="showResults"
+      :raceLength="100"
+    />
     <Finish v-if="state === 'finish'" :log="log" />
   </div>
 

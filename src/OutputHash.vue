@@ -27,21 +27,23 @@
     },
     computed: {
       animClass() {
-        if (this.difficulty > 0.9) {
-          return 'zoomOutRight';
-        }
-        if (this.difficulty > 0.75) {
-          return 'wobble';
-        }
-        if (this.difficulty > 0.5) {
-          return 'rubberBand';
-        }
-        if (this.difficulty > 0.25) {
-          return 'swing';
-        }
+        return 'wobble';
+        // if (this.difficulty > 0.9) {
+        //   return 'zoomOutRight';
+        // }
+        // if (this.difficulty > 0.75) {
+        //   return 'wobble';
+        // }
+        // if (this.difficulty > 0.5) {
+        //   return 'rubberBand';
+        // }
+        // if (this.difficulty > 0.25) {
+        //   return 'swing';
+        // }
       },
       animDuration() {
-        const duration = 50*(1.01 - this.difficulty) + 's';
+        const duration = 5+'s';
+        // const duration = 50*(1.01 - this.difficulty) + 's';
         return { 'animation-duration': duration };
       },
     },
@@ -64,6 +66,7 @@
     top: 150px;
     font-size: large;
     font-family: monospace;
+    user-select: none;
   }
 
 </style>

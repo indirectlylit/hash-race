@@ -22,14 +22,22 @@
   import hashes from './hashes.json';
   import shuffle from 'lodash.shuffle';
 
+  const hashTypes = [ 'hex', 'pro', 'eng', 'swa' ];
 
   export default {
     name: 'output',
     components: { InputHash, OutputHash },
-    props: {},
+    props: {
+      raceLength: {
+        type: Number,
+        required: true,
+      }
+    },
     data () {
       return {
-        secondsRemaining: 5,
+        secondsRemaining: this.raceLength,
+        hashIndex: 0,
+        history: [],
       };
     },
     computed: {
@@ -58,6 +66,7 @@
     bottom: 0;
     left: 0;
     padding: 32px;
+    color: gray;
   }
 
 </style>
