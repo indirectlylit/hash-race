@@ -3,11 +3,10 @@
   <div>
     <div class="pure-g">
       <OutputHash
-        hash="test"
+        :hash="hashes[hashIndex]['input']"
         class="pure-u-1 pure-u-sm-2-3"
-        :difficulty="0"
       />
-      <InputHash hash="test" class="pure-u-1 pure-u-sm-1-3" />
+      <InputHash @next="next" class="pure-u-1 pure-u-sm-1-3" />
     </div>
     <div class="time">Time remaining: {{ secondsRemaining }}s</div>
   </div>
@@ -44,6 +43,12 @@
       hashes() {
         return shuffle(hashes);
       },
+    },
+    methods: {
+      next(value) {
+        console.log('NEXT', value);
+        this.hashIndex += 1;
+      }
     },
     mounted() {
       console.log('starting...');

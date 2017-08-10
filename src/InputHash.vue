@@ -8,6 +8,7 @@
         <button type="submit" class="pure-button pure-button-primary" :disabled="input === ''">NEXT!</button>
       </fieldset>
     </form>
+    <p class="note">spaces are optional. press NEXT or the 'enter' key</p>
   </div>
 
 </template>
@@ -17,12 +18,6 @@
 
   export default {
     name: 'input',
-    props: {
-      hash: {
-        type: String,
-        required: true,
-      },
-    },
     data () {
       return {
         input: "",
@@ -30,7 +25,8 @@
     },
     methods: {
       NEXT() {
-        this.input = ""
+        this.$emit('next', this.input);
+        this.input = "";
       },
     },
   }
@@ -42,6 +38,11 @@
 
   input {
     font-family: monospace;
+  }
+
+  .note {
+    font-size: smaller;
+    color: gray;
   }
 
 </style>

@@ -5,7 +5,7 @@
     <Race
       v-if="state === 'race'"
       @done="showResults"
-      :raceLength="100"
+      :raceLength="500"
     />
     <Finish v-if="state === 'finish'" :log="log" />
   </div>

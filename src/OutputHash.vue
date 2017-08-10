@@ -67,6 +67,7 @@
     font-size: large;
     font-family: monospace;
     user-select: none;
+    white-space: nowrap;
   }
 
 </style>
