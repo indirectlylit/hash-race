@@ -3,7 +3,7 @@
   <div>
     <div class="pure-g">
       <OutputHash
-        :hash="hashes[hashIndex]['input']"
+        :hash="hashes[hashIndex].input"
         class="pure-u-1 pure-u-sm-2-3"
       />
       <InputHash @next="next" class="pure-u-1 pure-u-sm-1-3" />
@@ -58,8 +58,8 @@
         console.log('NEXT', value);
         const now = new Date();
         this.history.push({
-          type: this.hashes[this.hashIndex]['type'],
-          input: this.hashes[this.hashIndex]['input'],
+          type: this.hashes[this.hashIndex].type,
+          input: this.hashes[this.hashIndex].input,
           output: value,
           time: (now - this.hashStartTime) / 1000,
         });
