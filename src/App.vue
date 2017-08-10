@@ -7,7 +7,7 @@
       @done="showResults"
       :raceLength="raceLength"
     />
-    <Finish v-if="state === 'finish'" :log="log" />
+    <Finish v-if="state === 'finish'" :log="log" :raceLength="raceLength" />
   </div>
 
 </template>

@@ -2,7 +2,10 @@
 
   <div>
     <h1>Done!</h1>
-    <p>You typed {{ log.length }} hash{{ log.length === 1 ? '. Sad.' : 'es' }}
+    <p>
+      You typed
+      {{ log.length }} hash{{ log.length === 1 ? '' : 'es' }} in {{ raceLength }} seconds. You typed {{ pressCount }} characters.
+    </p>
     <p>
       <a :href="link" target="_blank" class="pure-button pure-button-primary">Submit this data</a> (or you'll lose it)
     </p>
@@ -10,6 +13,7 @@
       <thead>
         <tr>
           <th>Hash</th>
+          <th class="num">Total</th>
           <th class="num">Avg Speed</th>
           <th class="num">Error rate</th>
         </tr>
@@ -17,26 +21,31 @@
       <tbody>
         <tr>
           <td>Overall</td>
+          <td class="num">{{ log.length }}</td>
           <td class="num">{{ (overall_speed).toFixed(2) }} s</td>
           <td class="num">{{ (overall_error).toFixed(1) }}%</td>
         </tr>
         <tr v-if="hex.length">
           <td>Hexadecimal</td>
+          <td class="num">{{ hex.length }}</td>
           <td class="num">{{ (hex_speed).toFixed(2) }} s</td>
           <td class="num">{{ (hex_error).toFixed(1) }}%</td>
         </tr>
         <tr v-if="eng.length">
           <td>English</td>
+          <td class="num">{{ eng.length }}</td>
           <td class="num">{{ (humanhash_speed).toFixed(2) }} s</td>
           <td class="num">{{ (humanhash_error).toFixed(1) }}%</td>
         </tr>
         <tr v-if="swa.length">
           <td>Swahili</td>
+          <td class="num">{{ swa.length }}</td>
           <td class="num">{{ (humanhashsw_speed).toFixed(2) }} s</td>
           <td class="num">{{ (humanhashsw_error).toFixed(1) }}%</td>
         </tr>
         <tr v-if="pro.length">
           <td>Proquint</td>
+          <td class="num">{{ pro.length }}</td>
           <td class="num">{{ (proquint_speed).toFixed(2) }} s</td>
           <td class="num">{{ (proquint_error).toFixed(1) }}%</td>
         </tr>
@@ -55,7 +64,11 @@
       log: {
         type: Array,
         required: true,
-      }
+      },
+      raceLength: {
+        type: Number,
+        required: true,
+      },
     },
     methods: {
       filtered(type) {
@@ -82,7 +95,12 @@
     },
     computed: {
       link() {
-        return `https://docs.google.com/forms/d/e/1FAIpQLSdnC_lnNW1FFh7JgP1EDUqUHQb5WDH8ZSCI_ebS4hOlHZSvag/viewform?usp=pp_url&entry.1382379487&entry.228374467=${this.overall_speed}&entry.602812913=${this.overall_error}&entry.710817806=${this.hex_speed}&entry.649177695=${this.hex_error}&entry.860806856=${this.humanhash_speed}&entry.487924097=${this.humanhash_error}&entry.7819285=${this.humanhashsw_speed}&entry.181999424=${this.humanhashsw_error}&entry.1049389761=${this.proquint_speed}&entry.1746002784=${this.proquint_error}&entry.1178689906=${this.raw_data_json}`;
+        return `https://docs.google.com/forms/d/e/1FAIpQLSdnC_lnNW1FFh7JgP1EDUqUHQb5WDH8ZSCI_ebS4hOlHZSvag/viewform?usp=pp_url&entry.1382379487&entry.228374467=${this.overall_speed}&entry.602812913=${this.overall_error}&entry.710817806=${this.hex_speed}&entry.649177695=${this.hex_error}&entry.860806856=${this.humanhash_speed}&entry.487924097=${this.humanhash_error}&entry.7819285=${this.humanhashsw_speed}&entry.181999424=${this.humanhashsw_error}&entry.1049389761=${this.proquint_speed}&entry.1746002784=${this.proquint_error}&entry.1178689906=${this.raw_data_json}&entry.1308552911=${this.raceLength}`;
+      },
+      pressCount() {
+        return this.log.reduce((sum, item) => {
+          return sum + item.output.length
+        }, 0);
       },
 
       hex() { return this.filtered('hex'); },
