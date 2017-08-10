@@ -8,11 +8,6 @@
         <button type="submit" class="pure-button pure-button-primary" :disabled="input === ''">NEXT!</button>
       </fieldset>
     </form>
-    <p class="note">
-      case insensitive<br>
-      spaces are optional<br>
-      press NEXT or the 'enter' key<br>
-    </p>
   </div>
 
 </template>
@@ -42,11 +37,6 @@
 
   input {
     font-family: monospace;
-  }
-
-  .note {
-    font-size: smaller;
-    color: gray;
   }
 
 </style>

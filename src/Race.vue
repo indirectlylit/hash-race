@@ -8,11 +8,13 @@
       />
       <InputHash @next="next" class="pure-u-1 pure-u-sm-1-3" />
     </div>
+    <!--
     <div class="time">
       Time remaining: {{ secondsRemaining }}s
-      |
+      <br>
       Previous entry: {{ prevTime }}s
     </div>
+     -->
   </div>
 
 </template>
@@ -84,11 +86,13 @@
 <style scoped>
 
   .time {
-    position: absolute;
     bottom: 0;
     left: 0;
     padding: 32px;
     color: gray;
+    margin-top: 150px;
+    text-align: center;
+    font-size: small;
   }
 
 </style>

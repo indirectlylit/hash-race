@@ -4,7 +4,7 @@
     <h1>Done!</h1>
     <p>You typed {{ log.length }} hash{{ log.length === 1 ? '. Sad.' : 'es' }}
     <p>
-      <a :href="link" target="_blank">Submit this data</a> (opens in a new tab)
+      <a :href="link" target="_blank" class="pure-button pure-button-primary">Submit this data</a> (or you'll lose it)
     </p>
     <table class="pure-table pure-table-horizontal" v-if="log.length">
       <thead>

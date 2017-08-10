@@ -56,14 +56,14 @@
 
   .wrapper {
     text-align: center;
-    height: 300px;
+    height: 100px;
     width: 300px;
     margin: auto;
   }
 
   .hash {
     position: relative;
-    top: 150px;
+    top: 25px;
     font-size: large;
     font-family: monospace;
     user-select: none;

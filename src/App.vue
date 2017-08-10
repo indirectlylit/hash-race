@@ -48,7 +48,7 @@
       return {
         state: 'start',
         log: [],
-        raceLength: 600,
+        raceLength: 300,
       }
     },
     mounted() {

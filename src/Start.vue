@@ -19,6 +19,12 @@
         wrong!
       </span>
     </p>
+    <p class="note">
+      case insensitive<br>
+      spaces are optional<br>
+      press NEXT or the 'enter' key<br>
+    </p>
+
   </div>
 
 </template>
@@ -43,6 +49,11 @@
 
   h2 {
     color: white;
+  }
+
+  .note {
+    font-size: smaller;
+    color: gray;
   }
 
 </style>
