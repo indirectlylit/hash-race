@@ -1,0 +1,3 @@
+humanhash
+https://github.com/SUNET/python-proquint/archive/ac646b817c30978453e2c38e5139514cbbb06734.zip#egg=proquint
+jupyter
