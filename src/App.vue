@@ -19,7 +19,7 @@
     components: { Start, Race, Finish },
     data () {
       return {
-        state: 'finish',
+        state: 'race',
       }
     }
   }

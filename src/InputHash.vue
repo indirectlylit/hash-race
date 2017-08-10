@@ -1,10 +1,10 @@
 <template>
 
   <div>
-    <form @submit="NEXT" class="pure-form pure-form-stacked">
+    <form @submit.prevent="NEXT" class="pure-form pure-form-stacked">
       <fieldset>
         <legend>What is it?</legend>
-        <input type="text" placeholder="hash">
+        <input v-model="input" type="text" placeholder="(the hash)" autofocus>
         <button type="submit" class="pure-button pure-button-primary">NEXT!</button>
       </fieldset>
     </form>
@@ -30,7 +30,7 @@
     },
     methods: {
       NEXT() {
-        console.log('NEXT', this.input);
+        this.input = ""
       },
     },
   }
@@ -38,4 +38,10 @@
 </script>
 
 
-<style scoped></style>
+<style scoped>
+
+  input {
+    font-family: monospace;
+  }
+
+</style>
