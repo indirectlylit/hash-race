@@ -1,9 +1,9 @@
 <template>
 
   <div class="app">
-    <Start v-if="state === 'start'" />
-    <Race v-if="state === 'race'" />
-    <Finish v-if="state === 'finish'" />
+    <Start v-if="state === 'start'" @begin="startRace" />
+    <Race v-if="state === 'race'" @done="showResults" />
+    <Finish v-if="state === 'finish'" :log="log" />
   </div>
 
 </template>
@@ -17,9 +17,21 @@
   export default {
     name: 'app',
     components: { Start, Race, Finish },
+    methods: {
+      startRace() {
+        console.log('>>> START');
+        this.state = 'race';
+      },
+      showResults(log) {
+        console.log('>>> DONE', log);
+        this.log = log;
+        this.state = 'finish';
+      },
+    },
     data () {
       return {
-        state: 'race',
+        state: 'start',
+        log: [],
       }
     }
   }

@@ -8,7 +8,8 @@
         yes
       </button>
       <span v-else>
-        all right!
+        all right! On your mark, get set,
+        <button @click="$emit('begin')">GO!</button>
       </span>
       <button v-if="no && yes" @click="no = false">
         no
