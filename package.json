@@ -13,6 +13,8 @@
     "d3-ease": "^1.0.3",
     "d3-scale": "^1.0.6",
     "firebase": "^4.2.0",
+    "json-loader": "^0.5.7",
+    "lodash.shuffle": "^4.2.0",
     "purecss": "^1.0.0",
     "style-loader": "^0.18.2",
     "vue": "^2.3.3",

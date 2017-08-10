@@ -9,7 +9,7 @@
       />
       <InputHash hash="test" class="pure-u-1 pure-u-sm-1-3" />
     </div>
-    <div>Time remaining: {{ secondsRemaining }}s</div>
+    <div class="time">Time remaining: {{ secondsRemaining }}s</div>
   </div>
 
 </template>
@@ -19,6 +19,9 @@
 
   import InputHash from './InputHash.vue';
   import OutputHash from './OutputHash.vue';
+  import hashes from './hashes.json';
+  import shuffle from 'lodash.shuffle';
+
 
   export default {
     name: 'output',
@@ -28,6 +31,11 @@
       return {
         secondsRemaining: 5,
       };
+    },
+    computed: {
+      hashes() {
+        return shuffle(hashes);
+      },
     },
     mounted() {
       console.log('starting...');
@@ -43,4 +51,13 @@
 </script>
 
 
-<style scoped></style>
+<style scoped>
+
+  .time {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 32px;
+  }
+
+</style>

@@ -5,7 +5,7 @@
       <fieldset>
         <legend>What is it?</legend>
         <input v-model="input" type="text" placeholder="(the hash)" autofocus>
-        <button type="submit" class="pure-button pure-button-primary">NEXT!</button>
+        <button type="submit" class="pure-button pure-button-primary" :disabled="input === ''">NEXT!</button>
       </fieldset>
     </form>
   </div>
